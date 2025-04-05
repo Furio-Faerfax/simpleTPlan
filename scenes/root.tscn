@@ -1,0 +1,197 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3tqub53lnvdm"]
+
+[ext_resource type="PackedScene" uid="uid://cdspyk864ek0u" path="res://scenes/time_card.tscn" id="1_j5px3"]
+[ext_resource type="Script" uid="uid://dkhdclx53vj3m" path="res://scripts/app.gd" id="1_twpsu"]
+
+[node name="root" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_twpsu")
+
+[node name="vertical_layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="header" type="Panel" parent="vertical_layout"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="global_time" type="Label" parent="vertical_layout/header"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="column_head" type="Panel" parent="vertical_layout"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="column_layout" type="HBoxContainer" parent="vertical_layout/column_head"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="needs" type="Panel" parent="vertical_layout/column_head/column_layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="new_need" type="Button" parent="vertical_layout/column_head/column_layout/needs"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -15.5
+offset_right = 48.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "New Needs, sleep both and divided"
+
+[node name="tasks" type="Panel" parent="vertical_layout/column_head/column_layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="new_task" type="Button" parent="vertical_layout/column_head/column_layout/tasks"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.5
+offset_top = -50.0
+offset_right = 45.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "New Tasks"
+
+[node name="amusement" type="Panel" parent="vertical_layout/column_head/column_layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="new_amusement" type="Button" parent="vertical_layout/column_head/column_layout/amusement"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.5
+offset_top = -50.0
+offset_right = 70.5
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "New Amusement"
+
+[node name="body" type="Panel" parent="vertical_layout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="columns" type="HBoxContainer" parent="vertical_layout/body"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="needs" type="Panel" parent="vertical_layout/body/columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="scroller" type="ScrollContainer" parent="vertical_layout/body/columns/needs"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = -7.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="entries" type="VBoxContainer" parent="vertical_layout/body/columns/needs/scroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Node2D" parent="vertical_layout/body/columns/needs/scroller/entries" instance=ExtResource("1_j5px3")]
+layout_mode = 2
+_fixed = true
+time_preset = 8.0
+title = "Sleep"
+
+[node name="tasks" type="Panel" parent="vertical_layout/body/columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="scroller" type="ScrollContainer" parent="vertical_layout/body/columns/tasks"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = -7.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="entries" type="VBoxContainer" parent="vertical_layout/body/columns/tasks/scroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="amusement" type="Panel" parent="vertical_layout/body/columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="scroller" type="ScrollContainer" parent="vertical_layout/body/columns/amusement"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = -7.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="entries" type="VBoxContainer" parent="vertical_layout/body/columns/amusement/scroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="pressed" from="vertical_layout/column_head/column_layout/needs/new_need" to="." method="_on_new_need_pressed"]
+[connection signal="pressed" from="vertical_layout/column_head/column_layout/tasks/new_task" to="." method="_on_new_task_pressed"]
+[connection signal="pressed" from="vertical_layout/column_head/column_layout/amusement/new_amusement" to="." method="_on_new_amusement_pressed"]
