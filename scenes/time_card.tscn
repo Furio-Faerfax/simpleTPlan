@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdspyk864ek0u"]
+[gd_scene load_steps=7 format=3 uid="uid://cdspyk864ek0u"]
 
 [ext_resource type="Texture2D" uid="uid://cdn42xose0moc" path="res://assets/frame_time_c2ar1d.png" id="1_0qlcw"]
 [ext_resource type="Script" uid="uid://b7df265uj2w7h" path="res://scripts/time_card.gd" id="2_7usop"]
 [ext_resource type="Texture2D" uid="uid://cww00p63edvwa" path="res://assets/trash.png" id="3_bmpf5"]
-[ext_resource type="Texture2D" uid="uid://yuer3vayxmrq" path="res://assets/rename.png" id="4_bmpf5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ftg2j"]
 texture = ExtResource("1_0qlcw")
@@ -40,11 +39,14 @@ size_flags_horizontal = 3
 texture_filter = 1
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.158664
-anchor_top = 0.0592593
-anchor_right = 0.951983
-anchor_bottom = 0.925926
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = -50.0
+offset_right = -38.0
+offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -53,39 +55,69 @@ placeholder_text = "enter text here"
 alignment = 1
 clear_button_enabled = true
 caret_blink = true
-metadata/_edit_use_anchors_ = true
 
 [node name="time" type="Panel" parent="split"]
 custom_minimum_size = Vector2(165.37, 129.83)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="split/time"]
+[node name="planning" type="VBoxContainer" parent="split/time"]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.140741
-anchor_right = 0.899791
-anchor_bottom = 0.874074
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 104.0
+offset_right = -64.0
+offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="planned" type="HBoxContainer" parent="split/time/planning"]
+layout_mode = 2
+size_flags_vertical = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="time" type="Label" parent="split/time/HBoxContainer"]
+[node name="planned_time" type="Label" parent="split/time/planning/planned"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "0"
+text = "planned: 0"
 label_settings = SubResource("LabelSettings_bmpf5")
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="split/time/HBoxContainer"]
+[node name="buttons" type="VBoxContainer" parent="split/time/planning/planned"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="up" type="Button" parent="split/time/HBoxContainer/VBoxContainer"]
+[node name="planned_up" type="Button" parent="split/time/planning/planned/buttons"]
 layout_mode = 2
 text = "Up"
 
-[node name="down" type="Button" parent="split/time/HBoxContainer/VBoxContainer"]
+[node name="planned_down" type="Button" parent="split/time/planning/planned/buttons"]
+layout_mode = 2
+text = "Down
+"
+
+[node name="is" type="HBoxContainer" parent="split/time/planning"]
+layout_mode = 2
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="is_time" type="Label" parent="split/time/planning/is"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "is: 0"
+label_settings = SubResource("LabelSettings_bmpf5")
+horizontal_alignment = 1
+
+[node name="buttons" type="VBoxContainer" parent="split/time/planning/is"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="is_up" type="Button" parent="split/time/planning/is/buttons"]
+layout_mode = 2
+text = "Up"
+
+[node name="is_down" type="Button" parent="split/time/planning/is/buttons"]
 layout_mode = 2
 text = "Down
 "
@@ -103,16 +135,8 @@ grow_horizontal = 0
 grow_vertical = 0
 icon = ExtResource("3_bmpf5")
 
-[node name="rename" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
-grow_horizontal = 0
-icon = ExtResource("4_bmpf5")
-
-[connection signal="pressed" from="split/time/HBoxContainer/VBoxContainer/up" to="." method="_on_up_pressed"]
-[connection signal="pressed" from="split/time/HBoxContainer/VBoxContainer/down" to="." method="_on_down_pressed"]
+[connection signal="pressed" from="split/time/planning/planned/buttons/planned_up" to="." method="_on_planned_up_pressed"]
+[connection signal="pressed" from="split/time/planning/planned/buttons/planned_down" to="." method="_on_planned_down_pressed"]
+[connection signal="pressed" from="split/time/planning/is/buttons/is_up" to="." method="_on_is_up_pressed"]
+[connection signal="pressed" from="split/time/planning/is/buttons/is_down" to="." method="_on_is_down_pressed"]
 [connection signal="pressed" from="delete" to="." method="_on_delete_pressed"]

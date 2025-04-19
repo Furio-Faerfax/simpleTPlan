@@ -7,16 +7,20 @@ extends Control
 
 const TIME_CARD = preload("res://scenes/time_card.tscn")
 
+@export var variation = ["Planned ", "Is "]
 @export var prefix := "Time: "
 @export var suffix := " h remaining"
+
+@export var _stop_min_max := true
 #zeiten als ziel oder range
 
 func _ready() -> void:
 	update_global_time()
 	Global.timing_changed.connect(update_global_time)
+	Global.stop_min_max = _stop_min_max
 	
 func update_global_time():
-	global_time.text = str(prefix, Global.remaining_time, " / ",Global.total_day_time, suffix)
+	global_time.text = str(variation[0], prefix, Global.remaining_planned_time, " / ",Global.total_day_time, suffix, " | ", variation[1], prefix, Global.remaining_is_time, " / ",Global.total_day_time, suffix)
 
 
 func _on_new_need_pressed() -> void:
