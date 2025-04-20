@@ -61,6 +61,8 @@ func change_setting(setting, boo):
 			settings["first_start"] = boo
 		"autoload":
 			settings["autoload"] = boo
+		"clear_sleep":
+			settings["clear_sleep"] = boo
 		_:
 			pass
 	_save_settings()
@@ -99,7 +101,9 @@ func _load_settings():
 				settings["dash"] = line[1]
 				key_map["dash"] = line[1]
 			"autoload":
-				settings["autoload"] = line[1]
+				settings["autoload"] = true if line[1] == "true" else false
+			"clear_sleep":
+				settings["clear_sleep"] = true if line[1] == "true" else false
 			_:
 				pass
 

@@ -16,17 +16,19 @@ func load_tasks(columns):
 	else:
 		saved_tasks_data = json.data
 		print(saved_tasks_data)
-		_empty_board(columns)
+		_empty_board(columns, true)
 		_spawn_tasks(columns)
 
 	
-func _empty_board(columns):
+func _empty_board(columns, delete_sleep):
 	for all in columns:
-		_empty_column(all)
+		_empty_column(all, delete_sleep)
 
-func _empty_column(column):
+func _empty_column(column, delete_sleep):
 	if column.get_child_count() > 0:
 		for each in column.get_children():
+			if each.title == "Sleep" && !delete_sleep:
+				continue
 			each.queue_free()
 
 func _spawn_tasks(columns):
