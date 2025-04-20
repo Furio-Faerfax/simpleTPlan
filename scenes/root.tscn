@@ -24,19 +24,33 @@ grow_vertical = 2
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
-[node name="global_time" type="Label" parent="vertical_layout/header"]
+[node name="layout" type="HBoxContainer" parent="vertical_layout/header"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="save" type="Button" parent="vertical_layout/header/layout"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Save current table"
+
+[node name="load" type="Button" parent="vertical_layout/header/layout"]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Load"
+
+[node name="global_time" type="Label" parent="vertical_layout/header/layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="autoload" type="CheckButton" parent="vertical_layout/header/layout"]
+layout_mode = 2
+size_flags_horizontal = 10
+button_pressed = true
+text = "Autoload"
 
 [node name="column_head" type="Panel" parent="vertical_layout"]
 custom_minimum_size = Vector2(0, 100)
@@ -70,7 +84,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "New Needs, sleep both and divided"
+text = "New Need"
 
 [node name="tasks" type="Panel" parent="vertical_layout/column_head/column_layout"]
 layout_mode = 2
@@ -89,7 +103,7 @@ offset_right = 45.5
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "New Tasks"
+text = "New Task"
 
 [node name="amusement" type="Panel" parent="vertical_layout/column_head/column_layout"]
 layout_mode = 2
@@ -192,6 +206,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[connection signal="pressed" from="vertical_layout/header/layout/save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="vertical_layout/header/layout/load" to="." method="_on_load_pressed"]
+[connection signal="toggled" from="vertical_layout/header/layout/autoload" to="." method="_on_autoload_toggled"]
 [connection signal="pressed" from="vertical_layout/column_head/column_layout/needs/new_need" to="." method="_on_new_need_pressed"]
 [connection signal="pressed" from="vertical_layout/column_head/column_layout/tasks/new_task" to="." method="_on_new_task_pressed"]
 [connection signal="pressed" from="vertical_layout/column_head/column_layout/amusement/new_amusement" to="." method="_on_new_amusement_pressed"]

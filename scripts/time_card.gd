@@ -28,6 +28,7 @@ func _ready() -> void:
 		
 	if _fixed:
 		delete.queue_free()
+		title_label.editable =false
 
 
 func _on_delete_pressed() -> void:

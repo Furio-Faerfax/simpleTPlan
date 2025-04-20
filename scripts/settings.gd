@@ -3,6 +3,7 @@ extends Node
 const VERSION: String = "v1.0.0"
 const user_dir: String = "user://"
 const setting_file: String = "settings.txt"
+const task_file = "tasks.json"
 
 var test = 0
 
@@ -58,6 +59,8 @@ func change_setting(setting, boo):
 	match setting:
 		"first_start":
 			settings["first_start"] = boo
+		"autoload":
+			settings["autoload"] = boo
 		_:
 			pass
 	_save_settings()
@@ -95,6 +98,8 @@ func _load_settings():
 			"dash":
 				settings["dash"] = line[1]
 				key_map["dash"] = line[1]
+			"autoload":
+				settings["autoload"] = line[1]
 			_:
 				pass
 
