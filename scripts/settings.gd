@@ -15,7 +15,7 @@
 extends Node
 
 const APP_NAME = "simpleTPlan"
-const VERSION: String = "v1.0.0"
+const VERSION: String = "v1.0.1"
 const AUTHOR = "Furio Faerfax"
 const user_dir: String = "user://"
 const setting_file: String = "settings.txt"
@@ -39,6 +39,7 @@ func _ready() -> void:
 	_load_settings()
 	
 	if settings["first_start"] == true:
+		_file.save(str(user_dir)+str(task_file), "[[[\"Sleep\",8.0]],[],[]]")
 		#var proj:project_settings = project_settings.new()
 		#proj.setup()
 		change_setting("first_start", false)
@@ -115,5 +116,5 @@ func _load_key_map():
 		
 func get_app_infos() -> String:
 	var info = str(APP_NAME," - ", VERSION, "\nCopyright (c) 2025 ",AUTHOR,"\n\n", "font:\n[url=https://tinyworlds.itch.io/free-pixel-font-thaleah][color=",bb_link_color,"]ThaleahFat[/color][/url] by Rick Hoppmann\nLicensed under [url=https://creativecommons.org/licenses/by/4.0/][color=",bb_link_color,"]CC-BY4.0[/color][/url]")
-	info += str("\n\n", "The Project itself is available on [url=https://github.com/Furio-Faerfax][color=",bb_link_color,"]Github[/color][/url] under the [url=https://www.apache.org/licenses/LICENSE-2.0][color=",bb_link_color,"]Apache License 2.0[/color][/url]")
+	info += str("\n\n", "The Project itself is available on [url=https://github.com/Furio-Faerfax/simpleTPlan][color=",bb_link_color,"]Github[/color][/url] under the [url=https://www.apache.org/licenses/LICENSE-2.0][color=",bb_link_color,"]Apache License 2.0[/color][/url]")
 	return info

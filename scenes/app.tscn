@@ -1190,7 +1190,7 @@ icon = ExtResource("7_s6ce1")
 [node name="about_dialog" type="AcceptDialog" parent="."]
 title = "About"
 initial_position = 4
-size = Vector2i(550, 300)
+size = Vector2i(550, 410)
 theme = SubResource("Theme_jv7dx")
 ok_button_text = "Close"
 
@@ -1198,7 +1198,7 @@ ok_button_text = "Close"
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 542.0
-offset_bottom = 241.0
+offset_bottom = 334.0
 bbcode_enabled = true
 
 [connection signal="pressed" from="vertical_layout/column_head/column_layout/needs/new_need" to="." method="_on_new_need_pressed"]

@@ -111,6 +111,7 @@ func _on_clear_mouse_exited() -> void:
 
 func _on_about_pressed() -> void:
 	menu.hide()
+	toggled_menu = false
 	menu_btn.icon = MENU_INACTIVE
 	about_dialog.popup()
 

@@ -1,4 +1,4 @@
-# simplTPlan v1.0.0
+# simpleTPlan v1.0.1
 A simple Time planner, made to track my day on specific tasks, without any pressure to hold on a strict time plan/block
 
 Currently features a 3 column based planning structure, with a "planned" and an "is" time counter.  
@@ -17,3 +17,6 @@ Note: You are **not required to use this font**. You can replace it with your pr
 
 This project is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) © 2025 [Furio Faerfax](https://github.com/Furio-Faerfax).  
 See the [LICENSE](./LICENSE) file for full details.
+
+## Changelog
+See [CHANGELOG.md](./CHANGELOG.md) for release history.
