@@ -1,21 +1,23 @@
-[gd_scene load_steps=33 format=4 uid="uid://cdspyk864ek0u"]
+[gd_scene load_steps=28 format=4 uid="uid://d3tqub53lnvdm"]
 
-[ext_resource type="Texture2D" uid="uid://igc53h0fn7du" path="res://assets/time_card.png" id="1_uhkic"]
-[ext_resource type="Script" uid="uid://b7df265uj2w7h" path="res://scripts/time_card.gd" id="2_7usop"]
-[ext_resource type="Texture2D" uid="uid://cww00p63edvwa" path="res://assets/trash.png" id="3_bmpf5"]
-[ext_resource type="Texture2D" uid="uid://bisnnu3trgjnl" path="res://assets/button_up.png" id="3_uhkic"]
-[ext_resource type="Texture2D" uid="uid://c2f2mtuy218wf" path="res://assets/button_down.png" id="4_tsd5e"]
-[ext_resource type="StyleBox" uid="uid://dfy4a7cdoul12" path="res://assets/button_hover.tres" id="5_ocbs6"]
-[ext_resource type="StyleBox" uid="uid://dvd8w3xxludo2" path="res://assets/button_press.tres" id="6_xtqfs"]
+[ext_resource type="Script" uid="uid://dkhdclx53vj3m" path="res://scripts/app.gd" id="1_ljqyw"]
+[ext_resource type="Texture2D" uid="uid://dx2yv7hwq2fft" path="res://assets/new.png" id="2_jv7dx"]
+[ext_resource type="PackedScene" uid="uid://cdspyk864ek0u" path="res://scenes/time_card.tscn" id="3_6qkjt"]
+[ext_resource type="Texture2D" uid="uid://dndbsn0xemfx2" path="res://assets/menu_inactive.png" id="4_v5dbw"]
+[ext_resource type="Texture2D" uid="uid://dwqt1wkres4pr" path="res://assets/save.png" id="5_ltcdg"]
+[ext_resource type="Texture2D" uid="uid://dli5c3coufke7" path="res://assets/folder_open.png" id="6_ceqke"]
+[ext_resource type="Texture2D" uid="uid://b7wmso7dhb6ir" path="res://assets/clear.png" id="7_s6ce1"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ftg2j"]
-texture = ExtResource("1_uhkic")
+[sub_resource type="LabelSettings" id="LabelSettings_jv7dx"]
+font_size = 36
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_82t80"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ljqyw"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bmpf5"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jv7dx"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tsd5e"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6qkjt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v5dbw"]
 
 [sub_resource type="Image" id="Image_ljqyw"]
 data = {
@@ -69,7 +71,6 @@ style_name = "Medium"
 font_weight = 500
 subpixel_positioning = 0
 msdf_pixel_range = 8
-msdf_size = 128
 cache/0/16/0/ascent = 11.0
 cache/0/16/0/descent = 4.0
 cache/0/16/0/underline_position = 2.39062
@@ -876,55 +877,69 @@ cache/0/25/0/glyphs/69/size = Vector2(13, 13)
 cache/0/25/0/glyphs/69/uv_rect = Rect2(42, 1, 13, 13)
 cache/0/25/0/glyphs/69/texture_idx = 0
 
-[sub_resource type="LabelSettings" id="LabelSettings_yffs6"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ltcdg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jv7dx"]
+bg_color = Color(1, 1, 1, 0.431373)
+
+[sub_resource type="LabelSettings" id="LabelSettings_6qkjt"]
 font = SubResource("FontFile_ceqke")
 font_size = 36
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_60naw"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ceqke"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u4cjf"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0frui"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i7lh2"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s6ce1"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_taqn6"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ikde"]
 
-[sub_resource type="SystemFont" id="SystemFont_yffs6"]
-subpixel_positioning = 0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f1drf"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_bmpf5"]
-font = SubResource("SystemFont_yffs6")
-font_size = 36
+[sub_resource type="Theme" id="Theme_jv7dx"]
+default_font_size = 36
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yffs6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xtqfs"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2bs6d"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7sljh"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ocbs6"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhkic"]
-bg_color = Color(0.1566, 0.22653, 0.27, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ocbs6"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uhkic"]
-
-[node name="time_card" type="Panel"]
-custom_minimum_size = Vector2(0, 200)
+[node name="app" type="Control"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ljqyw")
+
+[node name="vertical_layout" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="header" type="Panel" parent="vertical_layout"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="layout" type="HBoxContainer" parent="vertical_layout/header"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="global_time" type="Label" parent="vertical_layout/header/layout"]
+layout_mode = 2
 size_flags_horizontal = 3
+label_settings = SubResource("LabelSettings_jv7dx")
+horizontal_alignment = 1
+
+[node name="column_head" type="Panel" parent="vertical_layout"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
 size_flags_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxTexture_ftg2j")
-script = ExtResource("2_7usop")
 
-[node name="split" type="HBoxContainer" parent="."]
+[node name="column_layout" type="HBoxContainer" parent="vertical_layout/column_head"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -932,140 +947,272 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="container" type="Control" parent="split"]
+[node name="needs" type="Panel" parent="vertical_layout/column_head/column_layout"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="title" type="LineEdit" parent="split/container"]
-texture_filter = 1
-custom_minimum_size = Vector2(200, 100)
+[node name="new_need" type="Button" parent="vertical_layout/column_head/column_layout/needs"]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 48.0
-offset_top = -50.0
-offset_right = -38.0
-offset_bottom = 50.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 36
-theme_override_styles/focus = SubResource("StyleBoxEmpty_82t80")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_bmpf5")
-placeholder_text = "enter text here"
-alignment = 1
-caret_blink = true
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ljqyw")
+text = "Needs"
+icon = ExtResource("2_jv7dx")
+icon_alignment = 1
+vertical_icon_alignment = 2
 
-[node name="time" type="Panel" parent="split"]
-custom_minimum_size = Vector2(165.37, 129.83)
+[node name="tasks" type="Panel" parent="vertical_layout/column_head/column_layout"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_tsd5e")
 
-[node name="planning" type="VBoxContainer" parent="split/time"]
+[node name="new_task" type="Button" parent="vertical_layout/column_head/column_layout/tasks"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 104.0
-offset_right = -64.0
-offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jv7dx")
+text = "Tasks"
+icon = ExtResource("2_jv7dx")
+icon_alignment = 1
+vertical_icon_alignment = 2
+
+[node name="amusement" type="Panel" parent="vertical_layout/column_head/column_layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="new_amusement" type="Button" parent="vertical_layout/column_head/column_layout/amusement"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6qkjt")
+text = "Amusements"
+icon = ExtResource("2_jv7dx")
+icon_alignment = 1
+vertical_icon_alignment = 2
+
+[node name="body" type="Panel" parent="vertical_layout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="columns" type="HBoxContainer" parent="vertical_layout/body"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="needs" type="Panel" parent="vertical_layout/body/columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="scroller" type="ScrollContainer" parent="vertical_layout/body/columns/needs"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = -7.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="planned" type="HBoxContainer" parent="split/time/planning"]
-layout_mode = 2
-size_flags_vertical = 3
-metadata/_edit_use_anchors_ = true
-
-[node name="planned_time" type="Label" parent="split/time/planning/planned"]
+[node name="entries" type="VBoxContainer" parent="vertical_layout/body/columns/needs/scroller"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "planned: 0"
-label_settings = SubResource("LabelSettings_yffs6")
-horizontal_alignment = 1
-
-[node name="buttons" type="VBoxContainer" parent="split/time/planning/planned"]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="planned_up" type="Button" parent="split/time/planning/planned/buttons"]
-layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_60naw")
-theme_override_styles/hover = ExtResource("5_ocbs6")
-theme_override_styles/pressed = ExtResource("6_xtqfs")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_u4cjf")
-icon = ExtResource("3_uhkic")
-
-[node name="planned_down" type="Button" parent="split/time/planning/planned/buttons"]
-layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_i7lh2")
-theme_override_styles/hover = ExtResource("5_ocbs6")
-theme_override_styles/pressed = ExtResource("6_xtqfs")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_taqn6")
-icon = ExtResource("4_tsd5e")
-
-[node name="is" type="HBoxContainer" parent="split/time/planning"]
-layout_mode = 2
 size_flags_vertical = 3
-metadata/_edit_use_anchors_ = true
 
-[node name="is_time" type="Label" parent="split/time/planning/is"]
+[node name="Node2D" parent="vertical_layout/body/columns/needs/scroller/entries" instance=ExtResource("3_6qkjt")]
+layout_mode = 2
+_fixed = true
+time_preset = 8.0
+title = "Sleep"
+
+[node name="title" parent="vertical_layout/body/columns/needs/scroller/entries/Node2D/split/container" index="0"]
+flat = true
+
+[node name="tasks" type="Panel" parent="vertical_layout/body/columns"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "is: 0"
-label_settings = SubResource("LabelSettings_bmpf5")
-horizontal_alignment = 1
 
-[node name="buttons" type="VBoxContainer" parent="split/time/planning/is"]
+[node name="scroller" type="ScrollContainer" parent="vertical_layout/body/columns/tasks"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = -7.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="entries" type="VBoxContainer" parent="vertical_layout/body/columns/tasks/scroller"]
 layout_mode = 2
-size_flags_vertical = 4
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="is_up" type="Button" parent="split/time/planning/is/buttons"]
+[node name="amusement" type="Panel" parent="vertical_layout/body/columns"]
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_yffs6")
-theme_override_styles/hover = ExtResource("5_ocbs6")
-theme_override_styles/pressed = ExtResource("6_xtqfs")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_xtqfs")
-icon = ExtResource("3_uhkic")
+size_flags_horizontal = 3
 
-[node name="is_down" type="Button" parent="split/time/planning/is/buttons"]
+[node name="scroller" type="ScrollContainer" parent="vertical_layout/body/columns/amusement"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = -7.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="entries" type="VBoxContainer" parent="vertical_layout/body/columns/amusement/scroller"]
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_2bs6d")
-theme_override_styles/hover = ExtResource("5_ocbs6")
-theme_override_styles/pressed = ExtResource("6_xtqfs")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_7sljh")
-icon = ExtResource("4_tsd5e")
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="delete" type="Button" parent="."]
+[node name="toolbar_container" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="menu_btn" type="Button" parent="toolbar_container"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.987
-anchor_top = 0.956
-anchor_right = 0.987
-anchor_bottom = 0.956
-offset_left = -47.04
-offset_top = -48.48
-offset_right = -15.04
-offset_bottom = -16.48
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_styles/focus = SubResource("StyleBoxEmpty_ocbs6")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_uhkic")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_uhkic")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_uhkic")
-theme_override_styles/hover = ExtResource("5_ocbs6")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_ocbs6")
-theme_override_styles/pressed = ExtResource("6_xtqfs")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_uhkic")
-icon = ExtResource("3_bmpf5")
+anchor_left = 0.219
+anchor_top = 0.209
+anchor_right = 1.11
+anchor_bottom = 1.11
+offset_left = -7.008
+offset_top = 1.312
+offset_right = 4.48
+offset_bottom = 12.48
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v5dbw")
+icon = ExtResource("4_v5dbw")
+flat = true
 
-[connection signal="mouse_entered" from="split/container/title" to="." method="_on_title_mouse_entered"]
-[connection signal="mouse_exited" from="split/container/title" to="." method="_on_title_mouse_exited"]
-[connection signal="pressed" from="split/time/planning/planned/buttons/planned_up" to="." method="_on_planned_up_pressed"]
-[connection signal="pressed" from="split/time/planning/planned/buttons/planned_down" to="." method="_on_planned_down_pressed"]
-[connection signal="pressed" from="split/time/planning/is/buttons/is_up" to="." method="_on_is_up_pressed"]
-[connection signal="pressed" from="split/time/planning/is/buttons/is_down" to="." method="_on_is_down_pressed"]
-[connection signal="pressed" from="delete" to="." method="_on_delete_pressed"]
+[node name="menu" type="ColorRect" parent="toolbar_container/menu_btn"]
+visible = false
+layout_mode = 0
+offset_top = 40.0
+offset_right = 243.0
+offset_bottom = 130.0
+color = Color(0.113725, 0.113725, 0.113725, 1)
+
+[node name="list" type="VBoxContainer" parent="toolbar_container/menu_btn/menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_right = -11.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="autoload" type="CheckButton" parent="toolbar_container/menu_btn/menu/list"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = SubResource("FontFile_ceqke")
+theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ltcdg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jv7dx")
+text = "Autoload   "
+
+[node name="clear" type="HBoxContainer" parent="toolbar_container/menu_btn/menu/list"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="clear_label" type="Label" parent="toolbar_container/menu_btn/menu/list/clear"]
+layout_mode = 2
+text = "clear sleep"
+label_settings = SubResource("LabelSettings_6qkjt")
+
+[node name="clear_sleep" type="CheckBox" parent="toolbar_container/menu_btn/menu/list/clear"]
+modulate = Color(0.303233, 0.303233, 0.303233, 1)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ceqke")
+
+[node name="about" type="Button" parent="toolbar_container/menu_btn/menu/list"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0frui")
+text = "About"
+alignment = 0
+
+[node name="toolbar" type="HBoxContainer" parent="toolbar_container"]
+layout_mode = 2
+offset_left = 41.0
+offset_top = 5.0
+offset_right = 176.0
+offset_bottom = 45.0
+
+[node name="save" type="Button" parent="toolbar_container/toolbar"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s6ce1")
+icon = ExtResource("5_ltcdg")
+
+[node name="load" type="Button" parent="toolbar_container/toolbar"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7ikde")
+icon = ExtResource("6_ceqke")
+
+[node name="clear" type="Button" parent="toolbar_container/toolbar"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f1drf")
+text = "
+"
+icon = ExtResource("7_s6ce1")
+
+[node name="about_dialog" type="AcceptDialog" parent="."]
+title = "About"
+initial_position = 4
+size = Vector2i(550, 300)
+theme = SubResource("Theme_jv7dx")
+ok_button_text = "Close"
+
+[node name="label" type="RichTextLabel" parent="about_dialog"]
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 542.0
+offset_bottom = 241.0
+bbcode_enabled = true
+
+[connection signal="pressed" from="vertical_layout/column_head/column_layout/needs/new_need" to="." method="_on_new_need_pressed"]
+[connection signal="pressed" from="vertical_layout/column_head/column_layout/tasks/new_task" to="." method="_on_new_task_pressed"]
+[connection signal="pressed" from="vertical_layout/column_head/column_layout/amusement/new_amusement" to="." method="_on_new_amusement_pressed"]
+[connection signal="pressed" from="toolbar_container/menu_btn" to="." method="_on_menu_btn_pressed"]
+[connection signal="toggled" from="toolbar_container/menu_btn/menu/list/autoload" to="." method="_on_autoload_toggled"]
+[connection signal="mouse_entered" from="toolbar_container/menu_btn/menu/list/clear" to="." method="_on_clear_mouse_entered"]
+[connection signal="mouse_exited" from="toolbar_container/menu_btn/menu/list/clear" to="." method="_on_clear_mouse_exited"]
+[connection signal="pressed" from="toolbar_container/menu_btn/menu/list/clear/clear_sleep" to="." method="_on_clear_sleep_pressed"]
+[connection signal="pressed" from="toolbar_container/menu_btn/menu/list/about" to="." method="_on_about_pressed"]
+[connection signal="pressed" from="toolbar_container/toolbar/save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="toolbar_container/toolbar/load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="toolbar_container/toolbar/clear" to="." method="_on_clear_pressed"]
+[connection signal="meta_clicked" from="about_dialog/label" to="." method="_on_label_meta_clicked"]
+
+[editable path="vertical_layout/body/columns/needs/scroller/entries/Node2D"]

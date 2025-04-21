@@ -1,2 +1,19 @@
-# tik_tokking
-v1.0.0
+# simplTPlan v1.0.0
+A simple Time planner, made to track my day on specific tasks, without any pressure to hold on a strict time plan/block
+
+Currently features a 3 column based planning structure, with a "planned" and an "is" time counter.  
+If you want to clear the field completely(including the sleep card, just toggle the switch in the menu for that option.  
+(Tasks with the Name "Sleep" currently gets blocked from clearing without the toggle, in a future Version I will add a system to add other potentially unclearable tasks)  
+You can Save, load and even toggle a mode to autoload the last saved table, "is" time will not be saved.
+
+## This Project uses the font: ThaleahFat.ttf
+- **ThaleahFat.ttf** by Rick Hoppmann — [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)  
+  [Font Source](https://tinyworlds.itch.io/free-pixel-font-thaleah)
+  - You are free to use this font as long as you provide appropriate attribution.
+
+Note: You are **not required to use this font**. You can replace it with your preferred font in your implementation.
+
+## License
+
+This project is licensed under the [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0) © 2025 [Furio Faerfax](https://github.com/Furio-Faerfax).  
+See the [LICENSE](./LICENSE) file for full details.

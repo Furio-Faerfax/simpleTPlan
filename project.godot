@@ -10,15 +10,14 @@ config_version=5
 
 [application]
 
-config/name="tik_tokking"
-run/main_scene="res://scenes/root.tscn"
+config/name="simpleTPlan"
+run/main_scene="res://scenes/app.tscn"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Settings="*res://scripts/settings.gd"
-Signals="*res://scripts/signals.gd"
 Global="*res://scripts/global.gd"
 
 [display]
@@ -37,8 +36,10 @@ folder_colors={
 "res://scripts/": "orange"
 }
 
+[gui]
+
+theme/custom_font="uid://bfsopi4nrmp5v"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter="Nearest"
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"

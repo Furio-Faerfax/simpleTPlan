@@ -1,6 +1,21 @@
+#Copyright (c) 2025 Furio Faerfax
+#
+#Licensed under the Apache License, Version 2.0 (the "License");
+#you may not use this file except in compliance with the License.
+#You may obtain a copy of the License at
+#
+#	http://www.apache.org/licenses/LICENSE-2.0
+#
+#Unless required by applicable law or agreed to in writing, software
+#distributed under the License is distributed on an "AS IS" BASIS,
+#WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#See the License for the specific language governing permissions and
+#limitations under the License.
+
 extends Node
 
 class_name load_task
+
 const TIME_CARD = preload("res://scenes/time_card.tscn")
 
 var saved_tasks_data
@@ -15,11 +30,10 @@ func load_tasks(columns):
 		print("JSON Parse Error: ", json.get_error_message(), " at line ", json.get_error_line())
 	else:
 		saved_tasks_data = json.data
-		print(saved_tasks_data)
+		#print(saved_tasks_data)
 		_empty_board(columns, true)
 		_spawn_tasks(columns)
 
-	
 func _empty_board(columns, delete_sleep):
 	for all in columns:
 		_empty_column(all, delete_sleep)
