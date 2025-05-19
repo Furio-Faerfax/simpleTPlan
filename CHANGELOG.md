@@ -11,6 +11,18 @@ This project adheres to [Semantic Versioning](https://semver.org/) and follows t
 
 ---
 
+## [1.0.2] – 2025-05-19
+### Fixed
+- On load, time will now be set to the correct planned/is value, same for clear
+- If a time card gets deleted, the time will be added back to the remaining times
+- fixed min/max blocking in the global time display, but disabled it for now, you can go from 0-24 in planned and is in the time cards, but the time for global display is now going in the negative values
+
+### Added
+- Is time, is now saved again, opt in in menu for this feature
+- a boolean in the time card for saving if its done or not, feature comes in next feature update
+
+---
+
 ## [1.0.1] – 2025-04-21
 ### Fixed
 - Crash on first-time launch of the app.

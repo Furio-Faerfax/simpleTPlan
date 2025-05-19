@@ -24,12 +24,12 @@ var stop_min_max := false
 func change_remaining_time(label: String, val: float):
 	match label:
 		"planned":
-			if stop_min_max && remaining_planned_time >= val && remaining_planned_time <= total_day_time-val || !stop_min_max:
+			if stop_min_max && remaining_planned_time+val >= 0.0 && remaining_planned_time <= total_day_time-val || !stop_min_max:
 				remaining_planned_time += val
 				#print(remaining_time)
 				timing_changed.emit()
 		"is":
-			if stop_min_max && remaining_is_time <= total_day_time-val || !stop_min_max:
+			if stop_min_max && remaining_is_time+val >= 0.0 && remaining_is_time <= total_day_time-val || !stop_min_max:
 				remaining_is_time += val
 				timing_changed.emit()
 		_:

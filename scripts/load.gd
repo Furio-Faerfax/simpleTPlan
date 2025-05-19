@@ -35,15 +35,27 @@ func load_tasks(columns):
 		_spawn_tasks(columns)
 
 func _empty_board(columns, delete_sleep):
+	var time_diff = [0.0, 0.0]
 	for all in columns:
-		_empty_column(all, delete_sleep)
+		var time_differ = _empty_column(all, delete_sleep)
+		time_diff[0] -= time_differ[0]
+		time_diff[1] -= time_differ[1]
+		
+	print(time_diff)
+	Global.remaining_planned_time = Global.total_day_time + time_diff[0]
+	Global.remaining_is_time = Global.total_day_time + time_diff[1]
+	Global.timing_changed.emit()
 
-func _empty_column(column, delete_sleep):
+func _empty_column(column, delete_sleep) -> Array:
+	var times = [0.0, 0.0]
 	if column.get_child_count() > 0:
 		for each in column.get_children():
 			if each.title == "Sleep" && !delete_sleep:
+				times[0] += each.planned_time_val
+				times[1] += each.is_time_val
 				continue
 			each.queue_free()
+	return times
 
 func _spawn_tasks(columns):
 	var column := 0
@@ -53,6 +65,11 @@ func _spawn_tasks(columns):
 			
 			card.title = entry[0]
 			card.planned_time_val = entry[1]
+			Global.change_remaining_time("planned", -entry[1])
+			
+			if Settings.settings["load_is_time"]:
+				card.is_time_val = entry[2]
+				Global.change_remaining_time("is", -entry[2])
 			
 			if entry[0] == "Sleep":
 				card._fixed = true

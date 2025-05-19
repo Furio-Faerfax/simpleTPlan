@@ -27,15 +27,17 @@ var labels := ["Planned: ", "Is: "]
 var max_val := 24
 var planned_time_val :float = 0.0
 var is_time_val :float = 0.0
+var done := false
 
 func _ready() -> void:
 	planned_time.text = str(labels[0], planned_time_val)
+	is_time.text = str(labels[1], is_time_val)
 	title_label.text = title
 	
 	if time_preset > 0.0:
 		planned_time_val = time_preset
 		planned_time.text = str(labels[0], planned_time_val)
-		Global.change_remaining_time("planned", -planned_time_val) 
+		#Global.change_remaining_time("planned", -planned_time_val) 
 	
 	if _fixed:
 		delete.queue_free()
@@ -43,6 +45,8 @@ func _ready() -> void:
 		title_label.flat = true
 
 func _on_delete_pressed() -> void:
+	Global.change_remaining_time("planned", planned_time_val)
+	Global.change_remaining_time("is", is_time_val)
 	queue_free()
 
 #region alter and stop or not stop the time values
@@ -80,6 +84,7 @@ func alter_label(mode, label):
 		"planned":
 			_label = "planned"
 			planned_time.text = str(labels[0], planned_time_val)
+			print(Global.remaining_planned_time)
 		"is":
 			_label = "is"
 			is_time.text = str(labels[1], is_time_val)

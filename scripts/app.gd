@@ -23,6 +23,7 @@ extends Control
 @onready var menu_btn: Button = $toolbar_container/menu_btn
 @onready var menu: ColorRect = $toolbar_container/menu_btn/menu
 @onready var about_dialog: AcceptDialog = $about_dialog
+@onready var is_time_load: CheckButton = $toolbar_container/menu_btn/menu/list/is_time_load
 
 const TIME_CARD = preload("res://scenes/time_card.tscn")
 const MENU_ACTIVE = preload("res://assets/menu_active.png")
@@ -45,6 +46,8 @@ func _ready() -> void:
 		autoload.button_pressed = true
 	if Settings.settings["clear_sleep"]:
 		clear_sleep.button_pressed = true
+	if Settings.settings["load_is_time"]:
+		is_time_load.button_pressed = true
 	
 	about_dialog.get_node("label").text = Settings.get_app_infos()
 	
@@ -71,6 +74,10 @@ func _on_new_amusement_pressed() -> void:
 
 func _on_autoload_toggled(toggled_on: bool) -> void:
 	Settings.change_setting("autoload", toggled_on)
+	
+
+func _on_is_time_load_toggled(toggled_on: bool) -> void:
+	Settings.change_setting("load_is_time", toggled_on)
 
 func _on_save_pressed() -> void:
 	_save.get_data(entries_needs, entries_tasks, entries_amusements)

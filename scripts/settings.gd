@@ -15,7 +15,7 @@
 extends Node
 
 const APP_NAME = "simpleTPlan"
-const VERSION: String = "v1.0.1"
+const VERSION: String = "v1.0.2"
 const AUTHOR = "Furio Faerfax"
 const user_dir: String = "user://"
 const setting_file: String = "settings.txt"
@@ -27,6 +27,7 @@ var settings: Dictionary = {
 	"first_start": true,
 	"autoload": false,
 	"clear_sleep": false,
+	"load_is_time": false,
 	}
 
 
@@ -69,6 +70,8 @@ func change_setting(setting, boo):
 			settings["autoload"] = boo
 		"clear_sleep":
 			settings["clear_sleep"] = boo
+		"load_is_time":
+			settings["load_is_time"] = boo
 		_:
 			pass
 	_save_settings()
@@ -92,6 +95,8 @@ func _load_settings():
 				settings["autoload"] = true if line[1] == "true" else false
 			"clear_sleep":
 				settings["clear_sleep"] = true if line[1] == "true" else false
+			"load_is_time":
+				settings["load_is_time"] = true if line[1] == "true" else false
 			_:
 				pass
 

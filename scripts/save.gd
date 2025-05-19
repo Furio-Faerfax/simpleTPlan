@@ -31,6 +31,7 @@ func get_data(needs, tasks, amusements):
 	data_array.push_back(entry_data)
 		
 	entry_data = []
+	entry_data = []
 	for entry in amusements.get_children():
 		entry_data.push_back(get_entry_data(entry))
 	data_array.push_back(entry_data)
@@ -40,7 +41,7 @@ func get_data(needs, tasks, amusements):
 	_save_tasks(data_string)
 
 func get_entry_data(entry) -> Array:
-	return [entry.title_label.text,entry.planned_time_val]#,entry.is_time_val]
+	return [entry.title_label.text, entry.planned_time_val, entry.is_time_val, entry.done]
 
 func _save_tasks(data: String):
 	var file = FileAccess.open(str(Settings.user_dir,Settings.task_file), FileAccess.WRITE)
