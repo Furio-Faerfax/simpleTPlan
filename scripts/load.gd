@@ -65,11 +65,11 @@ func _spawn_tasks(columns):
 			
 			card.title = entry[0]
 			card.planned_time_val = entry[1]
-			Global.change_remaining_time("planned", -entry[1])
+			Global.change_remaining_time("planned", -entry[1], false)
 			
 			if Settings.settings["load_is_time"]:
 				card.is_time_val = entry[2]
-				Global.change_remaining_time("is", -entry[2])
+				Global.change_remaining_time("is", -entry[2], false)
 			
 			if entry[0] == "Sleep":
 				card._fixed = true

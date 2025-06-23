@@ -11,6 +11,15 @@ This project adheres to [Semantic Versioning](https://semver.org/) and follows t
 
 ---
 
+## [1.1.0] – 2025-06-23
+### Added
+- A new column to store done tasks, and move them back to the column where they were before
+- Automatic time tracking, if you hit the stopwatch icon
+- Reposition the tasks in the columns
+- Additionaly to the arrows for the time setting, you can now enter the time with the input field, accepted formats: 0 | 0,0 | 0.0 ; other or longer values will be cropped down 
+
+---
+
 ## [1.0.2] – 2025-05-19
 ### Fixed
 - On load, time will now be set to the correct planned/is value, same for clear

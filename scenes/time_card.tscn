@@ -1,15 +1,32 @@
-[gd_scene load_steps=33 format=4 uid="uid://cdspyk864ek0u"]
+[gd_scene load_steps=48 format=4 uid="uid://cdspyk864ek0u"]
 
 [ext_resource type="Texture2D" uid="uid://igc53h0fn7du" path="res://assets/time_card.png" id="1_uhkic"]
 [ext_resource type="Script" uid="uid://b7df265uj2w7h" path="res://scripts/time_card.gd" id="2_7usop"]
-[ext_resource type="Texture2D" uid="uid://cww00p63edvwa" path="res://assets/trash.png" id="3_bmpf5"]
+[ext_resource type="Texture2D" uid="uid://bj55faapg07i2" path="res://assets/button_up_large.png" id="3_i7lh2"]
 [ext_resource type="Texture2D" uid="uid://bisnnu3trgjnl" path="res://assets/button_up.png" id="3_uhkic"]
+[ext_resource type="Texture2D" uid="uid://bqc5nvi1807i7" path="res://assets/button_down_large.png" id="4_taqn6"]
 [ext_resource type="Texture2D" uid="uid://c2f2mtuy218wf" path="res://assets/button_down.png" id="4_tsd5e"]
 [ext_resource type="StyleBox" uid="uid://dfy4a7cdoul12" path="res://assets/button_hover.tres" id="5_ocbs6"]
+[ext_resource type="Texture2D" uid="uid://betssdyxh4qc5" path="res://assets/timer_normal.png" id="5_u4cjf"]
 [ext_resource type="StyleBox" uid="uid://dvd8w3xxludo2" path="res://assets/button_press.tres" id="6_xtqfs"]
+[ext_resource type="Texture2D" uid="uid://dyprgyvmcms1y" path="res://assets/delete.png" id="7_60naw"]
+[ext_resource type="Texture2D" uid="uid://b8uxnei8nx6i5" path="res://assets/checked.png" id="7_yffs6"]
+[ext_resource type="Texture2D" uid="uid://cgkfweomvx4wy" path="res://assets/check_empty.png" id="8_yffs6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ftg2j"]
 texture = ExtResource("1_uhkic")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kynw8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_opkbd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fssuv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6m86"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tarvj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_e7o1o"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_82t80"]
 
@@ -880,6 +897,9 @@ cache/0/25/0/glyphs/69/texture_idx = 0
 font = SubResource("FontFile_ceqke")
 font_size = 36
 
+[sub_resource type="SystemFont" id="SystemFont_ocbs6"]
+subpixel_positioning = 0
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_60naw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u4cjf"]
@@ -903,6 +923,8 @@ font_size = 36
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7sljh"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w3o8h"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ocbs6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uhkic"]
@@ -911,6 +933,10 @@ bg_color = Color(0.1566, 0.22653, 0.27, 1)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ocbs6"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uhkic"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_weowx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vukae"]
 
 [node name="time_card" type="Panel"]
 custom_minimum_size = Vector2(0, 200)
@@ -929,69 +955,214 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 93.0
+offset_right = -15.0
+offset_bottom = -77.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="container" type="Control" parent="split"]
+[node name="position_timer_container" type="VBoxContainer" parent="split"]
+custom_minimum_size = Vector2(48.36, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
-[node name="title" type="LineEdit" parent="split/container"]
-texture_filter = 1
-custom_minimum_size = Vector2(200, 100)
+[node name="position_container" type="Control" parent="split/position_timer_container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="position_panel" type="Panel" parent="split/position_timer_container/position_container"]
+custom_minimum_size = Vector2(45, 0)
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = -1
+anchor_top = 0.032
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = 48.0
-offset_top = -50.0
-offset_right = -38.0
-offset_bottom = 50.0
+anchor_bottom = 0.885
+offset_top = -28.992
+offset_bottom = -21.8101
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 36
-theme_override_styles/focus = SubResource("StyleBoxEmpty_82t80")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_bmpf5")
-placeholder_text = "enter text here"
-alignment = 1
-caret_blink = true
+size_flags_horizontal = 0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kynw8")
 
-[node name="time" type="Panel" parent="split"]
-custom_minimum_size = Vector2(165.37, 129.83)
+[node name="position" type="VBoxContainer" parent="split/position_timer_container/position_container/position_panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -42.0
+offset_right = 20.0
+offset_bottom = 42.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="pos_up" type="Button" parent="split/position_timer_container/position_container/position_panel/position"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxEmpty_tsd5e")
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_opkbd")
+icon = ExtResource("3_i7lh2")
 
-[node name="planning" type="VBoxContainer" parent="split/time"]
+[node name="pos_down" type="Button" parent="split/position_timer_container/position_container/position_panel/position"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_fssuv")
+icon = ExtResource("4_taqn6")
+
+[node name="timer_panel" type="Panel" parent="split/position_timer_container"]
+layout_mode = 2
+
+[node name="timer_container" type="VBoxContainer" parent="split/position_timer_container/timer_panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 104.0
-offset_right = -64.0
-offset_bottom = -120.0
+offset_left = 2.415
+offset_top = -34.065
+offset_right = 21.415
+offset_bottom = 29.935
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+size_flags_horizontal = 0
+size_flags_vertical = 8
 
-[node name="planned" type="HBoxContainer" parent="split/time/planning"]
+[node name="is_progress" type="TextureProgressBar" parent="split/position_timer_container/timer_panel/timer_container"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
+fill_mode = 3
+texture_under = ExtResource("5_u4cjf")
+texture_progress = ExtResource("5_u4cjf")
+tint_progress = Color(0, 1, 0.166667, 1)
+
+[node name="timer_start" type="Button" parent="split/position_timer_container/timer_panel/timer_container/is_progress"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"FlatButton"
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.65098)
+theme_override_colors/icon_pressed_color = Color(0.375, 0.75, 0, 0.498039)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.219608)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o6m86")
+
+[node name="timer_pause" type="Button" parent="split/position_timer_container/timer_panel/timer_container/is_progress"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"FlatButton"
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0.65098)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.219608)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_tarvj")
+text = "
+"
+
+[node name="title_container" type="Control" parent="split"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="container" type="Panel" parent="split/title_container"]
+custom_minimum_size = Vector2(0, 70.675)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.024
+anchor_top = 0.462
+anchor_right = 0.753
+anchor_bottom = 0.54
+offset_left = -0.736
+offset_top = -0.420013
+offset_right = -16.322
+offset_bottom = -0.400024
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_e7o1o")
+
+[node name="title_field" type="LineEdit" parent="split/title_container/container"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.95
+anchor_bottom = 1.0
+offset_right = 27.307
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+theme_override_styles/focus = SubResource("StyleBoxEmpty_82t80")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bmpf5")
+placeholder_text = "enter text"
+alignment = 1
+caret_blink = true
+
+[node name="time" type="Panel" parent="split"]
+custom_minimum_size = Vector2(57.225, 122.145)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tsd5e")
+
+[node name="planning" type="VBoxContainer" parent="split/time"]
+layout_mode = 2
+offset_left = -72.335
+offset_top = -33.39
+offset_right = 44.665
+offset_bottom = 126.61
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="planned" type="VBoxContainer" parent="split/time/planning"]
+layout_mode = 2
+size_flags_horizontal = 8
 metadata/_edit_use_anchors_ = true
 
 [node name="planned_time" type="Label" parent="split/time/planning/planned"]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "planned: 0"
+text = "plan:"
 label_settings = SubResource("LabelSettings_yffs6")
 horizontal_alignment = 1
 
-[node name="buttons" type="VBoxContainer" parent="split/time/planning/planned"]
+[node name="planned_time_field" type="LineEdit" parent="split/time/planning/planned"]
+custom_minimum_size = Vector2(110, 40)
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_fonts/font = SubResource("SystemFont_ocbs6")
+theme_override_font_sizes/font_size = 36
+placeholder_text = "0.0"
 
-[node name="planned_up" type="Button" parent="split/time/planning/planned/buttons"]
+[node name="buttons" type="VBoxContainer" parent="split/time/planning/planned/planned_time_field"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="planned_up" type="Button" parent="split/time/planning/planned/planned_time_field/buttons"]
+visible = false
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_60naw")
 theme_override_styles/hover = ExtResource("5_ocbs6")
@@ -999,7 +1170,8 @@ theme_override_styles/pressed = ExtResource("6_xtqfs")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_u4cjf")
 icon = ExtResource("3_uhkic")
 
-[node name="planned_down" type="Button" parent="split/time/planning/planned/buttons"]
+[node name="planned_down" type="Button" parent="split/time/planning/planned/planned_time_field/buttons"]
+visible = false
 layout_mode = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_i7lh2")
 theme_override_styles/hover = ExtResource("5_ocbs6")
@@ -1007,51 +1179,98 @@ theme_override_styles/pressed = ExtResource("6_xtqfs")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_taqn6")
 icon = ExtResource("4_tsd5e")
 
-[node name="is" type="HBoxContainer" parent="split/time/planning"]
+[node name="is" type="VBoxContainer" parent="split/time/planning"]
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_horizontal = 8
 metadata/_edit_use_anchors_ = true
 
 [node name="is_time" type="Label" parent="split/time/planning/is"]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "is: 0"
+text = "is:"
 label_settings = SubResource("LabelSettings_bmpf5")
 horizontal_alignment = 1
 
-[node name="buttons" type="VBoxContainer" parent="split/time/planning/is"]
+[node name="is_time_field" type="LineEdit" parent="split/time/planning/is"]
+custom_minimum_size = Vector2(110, 40)
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_fonts/font = SubResource("SystemFont_ocbs6")
+theme_override_font_sizes/font_size = 36
+placeholder_text = "0.0"
+
+[node name="buttons" type="VBoxContainer" parent="split/time/planning/is/is_time_field"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
 size_flags_vertical = 4
 
-[node name="is_up" type="Button" parent="split/time/planning/is/buttons"]
+[node name="is_up" type="Button" parent="split/time/planning/is/is_time_field/buttons"]
+visible = false
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yffs6")
 theme_override_styles/hover = ExtResource("5_ocbs6")
 theme_override_styles/pressed = ExtResource("6_xtqfs")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_xtqfs")
 icon = ExtResource("3_uhkic")
 
-[node name="is_down" type="Button" parent="split/time/planning/is/buttons"]
+[node name="is_down" type="Button" parent="split/time/planning/is/is_time_field/buttons"]
+visible = false
 layout_mode = 2
+size_flags_vertical = 8
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2bs6d")
 theme_override_styles/hover = ExtResource("5_ocbs6")
 theme_override_styles/pressed = ExtResource("6_xtqfs")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_7sljh")
 icon = ExtResource("4_tsd5e")
 
-[node name="delete" type="Button" parent="."]
+[node name="done_delete_container" type="Control" parent="split"]
+custom_minimum_size = Vector2(31.98, 0)
+layout_mode = 2
+
+[node name="done_delete_panel" type="Panel" parent="split/done_delete_container"]
+custom_minimum_size = Vector2(40.63, 0)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.987
-anchor_top = 0.956
-anchor_right = 0.987
-anchor_bottom = 0.956
-offset_left = -47.04
-offset_top = -48.48
-offset_right = -15.04
-offset_bottom = -16.48
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -32.0
+offset_right = 5.02
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+theme_override_styles/panel = SubResource("StyleBoxEmpty_w3o8h")
+
+[node name="done_delete_layout" type="VBoxContainer" parent="split/done_delete_container/done_delete_panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 3
+
+[node name="delete" type="Button" parent="split/done_delete_container/done_delete_panel/done_delete_layout"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+theme_override_colors/icon_hover_color = Color(1, 0, 0, 0.686275)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_ocbs6")
 theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_uhkic")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_uhkic")
@@ -1060,12 +1279,85 @@ theme_override_styles/hover = ExtResource("5_ocbs6")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_ocbs6")
 theme_override_styles/pressed = ExtResource("6_xtqfs")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_uhkic")
-icon = ExtResource("3_bmpf5")
+icon = ExtResource("7_60naw")
 
-[connection signal="mouse_entered" from="split/container/title" to="." method="_on_title_mouse_entered"]
-[connection signal="mouse_exited" from="split/container/title" to="." method="_on_title_mouse_exited"]
-[connection signal="pressed" from="split/time/planning/planned/buttons/planned_up" to="." method="_on_planned_up_pressed"]
-[connection signal="pressed" from="split/time/planning/planned/buttons/planned_down" to="." method="_on_planned_down_pressed"]
-[connection signal="pressed" from="split/time/planning/is/buttons/is_up" to="." method="_on_is_up_pressed"]
-[connection signal="pressed" from="split/time/planning/is/buttons/is_down" to="." method="_on_is_down_pressed"]
-[connection signal="pressed" from="delete" to="." method="_on_delete_pressed"]
+[node name="done" type="Button" parent="split/done_delete_container/done_delete_panel/done_delete_layout"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+theme_type_variation = &"FlatButton"
+theme_override_colors/icon_hover_pressed_color = Color(0, 0.764706, 0.466667, 0.780392)
+theme_override_colors/icon_hover_color = Color(2.45467e-06, 0.76516, 0.466196, 0.780392)
+theme_override_colors/icon_pressed_color = Color(0, 0.764706, 0.466667, 0.780392)
+theme_override_icons/icon = ExtResource("8_yffs6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_weowx")
+
+[node name="undone" type="Button" parent="split/done_delete_container/done_delete_panel/done_delete_layout"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_type_variation = &"FlatButton"
+theme_override_colors/icon_hover_pressed_color = Color(1, 0, 0, 0.686275)
+theme_override_colors/icon_hover_color = Color(1, 0, 0, 0.686275)
+theme_override_colors/icon_pressed_color = Color(1, 0, 0, 0.686275)
+theme_override_icons/icon = ExtResource("7_yffs6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vukae")
+
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[connection signal="mouse_entered" from="split/position_timer_container/position_container/position_panel" to="." method="_on_position_panel_mouse_entered"]
+[connection signal="mouse_exited" from="split/position_timer_container/position_container/position_panel" to="." method="_on_position_panel_mouse_exited"]
+[connection signal="mouse_entered" from="split/position_timer_container/position_container/position_panel/position/pos_up" to="." method="_on_pos_up_mouse_entered"]
+[connection signal="mouse_exited" from="split/position_timer_container/position_container/position_panel/position/pos_up" to="." method="_on_pos_up_mouse_exited"]
+[connection signal="pressed" from="split/position_timer_container/position_container/position_panel/position/pos_up" to="." method="_on_up_pressed"]
+[connection signal="mouse_entered" from="split/position_timer_container/position_container/position_panel/position/pos_down" to="." method="_on_pos_down_mouse_entered"]
+[connection signal="mouse_exited" from="split/position_timer_container/position_container/position_panel/position/pos_down" to="." method="_on_pos_down_mouse_exited"]
+[connection signal="pressed" from="split/position_timer_container/position_container/position_panel/position/pos_down" to="." method="_on_down_pressed"]
+[connection signal="mouse_entered" from="split/position_timer_container/timer_panel/timer_container/is_progress/timer_start" to="." method="_on_timer_start_mouse_entered"]
+[connection signal="mouse_exited" from="split/position_timer_container/timer_panel/timer_container/is_progress/timer_start" to="." method="_on_timer_start_mouse_exited"]
+[connection signal="pressed" from="split/position_timer_container/timer_panel/timer_container/is_progress/timer_start" to="." method="_on_timer_start_pressed"]
+[connection signal="mouse_entered" from="split/position_timer_container/timer_panel/timer_container/is_progress/timer_pause" to="." method="_on_timer_pause_mouse_entered"]
+[connection signal="mouse_exited" from="split/position_timer_container/timer_panel/timer_container/is_progress/timer_pause" to="." method="_on_timer_pause_mouse_exited"]
+[connection signal="pressed" from="split/position_timer_container/timer_panel/timer_container/is_progress/timer_pause" to="." method="_on_timer_pause_pressed"]
+[connection signal="mouse_entered" from="split/title_container/container/title_field" to="." method="_on_title_mouse_entered"]
+[connection signal="mouse_exited" from="split/title_container/container/title_field" to="." method="_on_title_mouse_exited"]
+[connection signal="focus_entered" from="split/time/planning/planned/planned_time_field" to="." method="_on_planned_time_field_focus_entered"]
+[connection signal="focus_exited" from="split/time/planning/planned/planned_time_field" to="." method="_on_planned_time_field_focus_exited"]
+[connection signal="mouse_entered" from="split/time/planning/planned/planned_time_field" to="." method="_on_planned_time_field_mouse_entered"]
+[connection signal="mouse_exited" from="split/time/planning/planned/planned_time_field" to="." method="_on_planned_time_field_mouse_exited"]
+[connection signal="text_submitted" from="split/time/planning/planned/planned_time_field" to="." method="_on_planned_time_field_text_submitted"]
+[connection signal="mouse_entered" from="split/time/planning/planned/planned_time_field/buttons/planned_up" to="." method="_on_planned_up_mouse_entered"]
+[connection signal="mouse_exited" from="split/time/planning/planned/planned_time_field/buttons/planned_up" to="." method="_on_planned_up_mouse_exited"]
+[connection signal="pressed" from="split/time/planning/planned/planned_time_field/buttons/planned_up" to="." method="_on_planned_up_pressed"]
+[connection signal="mouse_entered" from="split/time/planning/planned/planned_time_field/buttons/planned_down" to="." method="_on_planned_down_mouse_entered"]
+[connection signal="mouse_exited" from="split/time/planning/planned/planned_time_field/buttons/planned_down" to="." method="_on_planned_down_mouse_exited"]
+[connection signal="pressed" from="split/time/planning/planned/planned_time_field/buttons/planned_down" to="." method="_on_planned_down_pressed"]
+[connection signal="focus_entered" from="split/time/planning/is/is_time_field" to="." method="_on_is_time_field_focus_entered"]
+[connection signal="focus_exited" from="split/time/planning/is/is_time_field" to="." method="_on_is_time_field_focus_exited"]
+[connection signal="mouse_entered" from="split/time/planning/is/is_time_field" to="." method="_on_is_time_field_mouse_entered"]
+[connection signal="mouse_exited" from="split/time/planning/is/is_time_field" to="." method="_on_is_time_field_mouse_exited"]
+[connection signal="text_submitted" from="split/time/planning/is/is_time_field" to="." method="_on_fis_time_field_text_submitted"]
+[connection signal="mouse_entered" from="split/time/planning/is/is_time_field/buttons/is_up" to="." method="_on_is_up_mouse_entered"]
+[connection signal="mouse_exited" from="split/time/planning/is/is_time_field/buttons/is_up" to="." method="_on_is_up_mouse_exited"]
+[connection signal="pressed" from="split/time/planning/is/is_time_field/buttons/is_up" to="." method="_on_is_up_pressed"]
+[connection signal="mouse_entered" from="split/time/planning/is/is_time_field/buttons/is_down" to="." method="_on_is_down_mouse_entered"]
+[connection signal="mouse_exited" from="split/time/planning/is/is_time_field/buttons/is_down" to="." method="_on_is_down_mouse_exited"]
+[connection signal="pressed" from="split/time/planning/is/is_time_field/buttons/is_down" to="." method="_on_is_down_pressed"]
+[connection signal="mouse_entered" from="split/done_delete_container/done_delete_panel" to="." method="_on_done_delete_panel_mouse_entered"]
+[connection signal="mouse_exited" from="split/done_delete_container/done_delete_panel" to="." method="_on_done_delete_panel_mouse_exited"]
+[connection signal="mouse_entered" from="split/done_delete_container/done_delete_panel/done_delete_layout/delete" to="." method="_on_delete_mouse_entered"]
+[connection signal="mouse_exited" from="split/done_delete_container/done_delete_panel/done_delete_layout/delete" to="." method="_on_delete_mouse_exited"]
+[connection signal="pressed" from="split/done_delete_container/done_delete_panel/done_delete_layout/delete" to="." method="_on_delete_pressed"]
+[connection signal="mouse_entered" from="split/done_delete_container/done_delete_panel/done_delete_layout/done" to="." method="_on_done_mouse_entered"]
+[connection signal="mouse_exited" from="split/done_delete_container/done_delete_panel/done_delete_layout/done" to="." method="_on_done_mouse_exited"]
+[connection signal="pressed" from="split/done_delete_container/done_delete_panel/done_delete_layout/done" to="." method="_on_done_pressed"]
+[connection signal="mouse_entered" from="split/done_delete_container/done_delete_panel/done_delete_layout/undone" to="." method="_on_undone_mouse_entered"]
+[connection signal="mouse_exited" from="split/done_delete_container/done_delete_panel/done_delete_layout/undone" to="." method="_on_undone_mouse_exited"]
+[connection signal="pressed" from="split/done_delete_container/done_delete_panel/done_delete_layout/undone" to="." method="_on_undone_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

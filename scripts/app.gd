@@ -18,6 +18,7 @@ extends Control
 @onready var entries_needs: VBoxContainer = $vertical_layout/body/columns/needs/scroller/entries
 @onready var entries_tasks: VBoxContainer = $vertical_layout/body/columns/tasks/scroller/entries
 @onready var entries_amusements: VBoxContainer = $vertical_layout/body/columns/amusement/scroller/entries
+@onready var entries_done: VBoxContainer = $vertical_layout/body/columns/done/scroller/entries
 @onready var autoload: CheckButton = $toolbar_container/menu_btn/menu/list/autoload
 @onready var clear_sleep: CheckBox = $toolbar_container/menu_btn/menu/list/clear/clear_sleep
 @onready var menu_btn: Button = $toolbar_container/menu_btn
@@ -34,6 +35,11 @@ const MENU_INACTIVE = preload("res://assets/menu_inactive.png")
 @export var suffix := " h remaining"
 @export var _stop_min_max := true
 
+@export var web_export :bool:
+	set(val):
+		Settings.web_export = val
+	
+
 var _save = save_tasks.new()
 var _load = load_task.new()
 
@@ -41,6 +47,9 @@ var mouse_on_clear := false
 var toggled_menu := false
 
 func _ready() -> void:
+	await RenderingServer.frame_post_draw
+	DisplayServer.window_set_title(Settings.APP_NAME, get_window().get_window_id())
+	
 	if Settings.settings["autoload"]:
 		_load.load_tasks([entries_needs, entries_tasks, entries_amusements])
 		autoload.button_pressed = true
@@ -53,23 +62,37 @@ func _ready() -> void:
 	
 	update_global_time()
 	Global.timing_changed.connect(update_global_time)
+	Global.time_card_done.connect(_on_time_card_done)
+	Global.time_card_undone.connect(_on_time_card_undone)
+	
+	Global.time_card_reposition.connect(_on_time_card_reposition)
+	
 	Global.stop_min_max = _stop_min_max
 	
 func update_global_time():
-	global_time.text = str(variation[0], prefix, Global.remaining_planned_time, " / ",Global.total_day_time, suffix, " | ", variation[1], prefix, Global.remaining_is_time, " / ",Global.total_day_time, suffix)
+	var t = Global.remaining_is_time
+	var is_split = str(t).split(".")
+	if is_split[1].length() > 2:
+		is_split[1] = is_split[1][0]+is_split[1][1]
+	var is_str = is_split[0]+"."+is_split[1]
+	#Global.remaining_is_time = float(is_str)
+	global_time.text = str(variation[0], prefix, Global.remaining_planned_time, " / ",Global.total_day_time, suffix, " | ", variation[1], prefix, is_str, " / ",Global.total_day_time, suffix)
 	pass
 
 
 func _on_new_need_pressed() -> void:
 	var inst = TIME_CARD.instantiate()
+	inst.origin = "need"
 	entries_needs.add_child(inst)
 
 func _on_new_task_pressed() -> void:
 	var inst = TIME_CARD.instantiate()
 	entries_tasks.add_child(inst)
+	inst.origin = "tassk"
 
 func _on_new_amusement_pressed() -> void:
 	var inst = TIME_CARD.instantiate()
+	inst.origin = "amusement"
 	entries_amusements.add_child(inst)
 
 func _on_autoload_toggled(toggled_on: bool) -> void:
@@ -124,3 +147,30 @@ func _on_about_pressed() -> void:
 
 func _on_label_meta_clicked(meta: Variant) -> void:
 	OS.shell_open(meta)
+
+
+func _on_time_card_done(card):
+	card.origin = card.get_parent().get_parent().get_parent().name
+	card.reparent(entries_done)
+	
+func _on_time_card_undone(card):
+	match card.origin:
+		"needs":
+			card.reparent(entries_needs)
+		"tasks":
+			card.reparent(entries_tasks)
+		"amusement":
+			card.reparent(entries_amusements)
+			
+
+
+
+func _on_time_card_reposition(card, dir):
+	var count := 0
+	for entry in card.get_parent().get_children():
+		if entry == card:
+			if count == 0 and dir < 0 or (count == card.get_parent().get_child_count()-1 and dir > 0):
+				break
+			card.get_parent().move_child(entry, count+dir)
+			break
+		count += 1

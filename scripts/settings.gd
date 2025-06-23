@@ -15,13 +15,15 @@
 extends Node
 
 const APP_NAME = "simpleTPlan"
-const VERSION: String = "v1.0.2"
+const VERSION: String = "v1.1.0"
 const AUTHOR = "Furio Faerfax"
 const user_dir: String = "user://"
 const setting_file: String = "settings.txt"
 const task_file = "tasks.json"
 
 var bb_link_color = "#aaaaFF"
+
+var web_export := false
 
 var settings: Dictionary = {
 	"first_start": true,
@@ -50,11 +52,12 @@ func _ready() -> void:
 	_load_key_map()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
-	if event.is_action_pressed("f1"):
-		#_open_user_directory()
-		pass
+	if !web_export:
+		if event.is_action_pressed("ui_cancel"):
+			get_tree().quit()
+		if event.is_action_pressed("f1"):
+			_open_user_directory()
+			pass
 	
 
 func _open_user_directory():

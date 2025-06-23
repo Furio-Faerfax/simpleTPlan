@@ -1009,6 +1009,23 @@ icon = ExtResource("2_jv7dx")
 icon_alignment = 1
 vertical_icon_alignment = 2
 
+[node name="done" type="Panel" parent="vertical_layout/column_head/column_layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="new_amusement" type="Label" parent="vertical_layout/column_head/column_layout/done"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = " done"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="body" type="Panel" parent="vertical_layout"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -1049,9 +1066,6 @@ _fixed = true
 time_preset = 8.0
 title = "Sleep"
 
-[node name="title" parent="vertical_layout/body/columns/needs/scroller/entries/Node2D/split/container" index="0"]
-flat = true
-
 [node name="tasks" type="Panel" parent="vertical_layout/body/columns"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1090,6 +1104,27 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="entries" type="VBoxContainer" parent="vertical_layout/body/columns/amusement/scroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="done" type="Panel" parent="vertical_layout/body/columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="scroller" type="ScrollContainer" parent="vertical_layout/body/columns/done"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 3.0
+offset_right = -7.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="entries" type="VBoxContainer" parent="vertical_layout/body/columns/done/scroller"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -1232,5 +1267,3 @@ bbcode_enabled = true
 [connection signal="pressed" from="toolbar_container/toolbar/load" to="." method="_on_load_pressed"]
 [connection signal="pressed" from="toolbar_container/toolbar/clear" to="." method="_on_clear_pressed"]
 [connection signal="meta_clicked" from="about_dialog/label" to="." method="_on_label_meta_clicked"]
-
-[editable path="vertical_layout/body/columns/needs/scroller/entries/Node2D"]

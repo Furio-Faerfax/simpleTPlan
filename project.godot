@@ -43,3 +43,5 @@ theme/custom_font="uid://bfsopi4nrmp5v"
 [rendering]
 
 textures/canvas_textures/default_texture_filter="Nearest"
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
