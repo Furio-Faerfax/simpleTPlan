@@ -11,6 +11,12 @@ This project adheres to [Semantic Versioning](https://semver.org/) and follows t
 
 ---
 
+## [1.1.1] – 2025-06-24
+### fixed
+- timer is now working with the correct duration
+
+---
+
 ## [1.1.0] – 2025-06-23
 ### Added
 - A new column to store done tasks, and move them back to the column where they were before

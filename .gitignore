@@ -14,6 +14,7 @@ export_credentials.cfg
 data_*/
 mono_crash.*.json
 
+engine.x86_64
 simpleTPlan.x86_64
 export/*
 export_presets.cfg

@@ -44,7 +44,7 @@ const CHECK_EMPTY = preload("res://assets/check_empty.png")
 @export var title := ""
 
 
-var timer_step = 1
+var timer_step = 60
 var total_time :int = 0
 var counting_time :int = 0
 var time_hour_count = 0

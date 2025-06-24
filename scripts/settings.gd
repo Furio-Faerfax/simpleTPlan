@@ -15,7 +15,7 @@
 extends Node
 
 const APP_NAME = "simpleTPlan"
-const VERSION: String = "v1.1.0"
+const VERSION: String = "v1.1.1"
 const AUTHOR = "Furio Faerfax"
 const user_dir: String = "user://"
 const setting_file: String = "settings.txt"

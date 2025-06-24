@@ -1,4 +1,4 @@
-# simpleTPlan v1.1.0
+# simpleTPlan v1.1.1
 A simple Time planner, made to track my day on specific tasks, without any pressure to hold on a strict time plan/block
 
 Currently features a 4 column based planning structure, with a "planned" and an "is" time counter.  

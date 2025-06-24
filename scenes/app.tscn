@@ -913,6 +913,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ljqyw")
 _stop_min_max = false
+web_export = true
 
 [node name="vertical_layout" type="VBoxContainer" parent="."]
 layout_mode = 1
